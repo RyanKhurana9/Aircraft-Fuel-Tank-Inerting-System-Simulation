@@ -4,14 +4,14 @@ import pandas as pd
 from .atmosphere import FlightProfile, isa_temperature, isa_pressure
 from .fuel_tank import FuelTank
 from .inerting import InertingSystem
-from .controller import PIcontroller
+from .controller import PIController
 
 
 def run_simulation(dt=1.0, flight=None, tank=None, inerting=None, controller=None):
     flight = flight or FlightProfile()
     tank = tank or FuelTank()
     inerting = inerting or InertingSystem()
-    controller = controller or PIcontroller()
+    controller = controller or PIController()
 
     inerting.initialize(isa_pressure(0.0), tank.ullage_volume(), tank.T_ullage)
 
